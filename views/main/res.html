@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>소켓 통신 연습</title>
+    </head>
+    <body>
+        <div id="res"></div>
+        <button id="re-btn">재전송</button>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            //소켓통신 하기
+            const socket = io.connect('/chat',{
+                path:'/socket.io'
+            });
+            socket.on("res",(data) => {
+                document.getElementById("res").innerHTML+=data.data;
+            });
+            document.querySelector("#re-btn").addEventListener("click",() => {
+                socket.emit("re-send",{data:"재전송입니다"});
+            });
+        </script>
+    </body>
+</html>

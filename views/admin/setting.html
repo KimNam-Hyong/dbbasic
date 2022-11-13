@@ -1,0 +1,71 @@
+
+{% block content %}
+<div id="container" class="setting">
+    <h2 class="title">Setting</h2>
+        <div class="form">
+        <h4>RSS 기본메세지</h4>
+        <input type="text" id="no_data_message" placeholder="[분위기, 장르에 맞지 않는 신청곡은 나오지 않을 수도 있습니다.]" value="{{row.no_data_message}}"> 
+        <button type="button" onClick="noDataMessage()">SAVE</button>
+        </div>
+        <br>
+        
+        <div class="form">
+        <h4>RSS 사용자 신청곡 접수 시 메세지</h4>
+        <p>@id : 신청한 사람 이름</p>
+        <p>@artist : 아티스트명</p>
+        <p>@title : 노래제목</p>
+        <input type="text" id="data_message" placeholder="@id님의 신청곡♥ @artist-@title" value="{{row.data_message}}"> 
+        <button type="button" onClick="dataMessage()">SAVE</button>
+        </div>
+        <br>
+        
+        <div class="form">
+        <h4>RSS PLAY 버튼 클릭 시 메세지</h4>
+        <p>@id : 신청한 사람 이름</p>
+        <p>@artist : 아티스트명</p>
+        <p>@title : 노래제목</p>
+        <input type="text" id="play_message" placeholder="@id님의 신청곡♥ @artist-@title" value="{{row.play_message}}"> 
+        <button type="button" onClick="playMessage()">SAVE</button>
+        </div>
+        
+        <br>
+        <div class="form">
+        <h4>신청곡 횟수 제한 세팅</h4>
+        <input type="text" id="r_length" placeholder="제한하실 숫자를 입력해주세요." value="{{row.r_length}}"> 
+        <button type="button" onClick="lengthSend()">SAVE</button>
+        </div>
+    
+    </div>
+    {% endblock %}
+    {% block script%}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function noDataMessage(){
+            let value = document.getElementById("no_data_message").value;
+            let field = "no_data_message";
+            postData(field,value);
+        }
+        function dataMessage(){
+            let value = document.getElementById("data_message").value;
+            let field = "data_message";
+            postData(field,value);
+        }
+        function playMessage(){
+            let value = document.getElementById("play_message").value;
+            let field = "play_message";
+            postData(field,value);
+        }
+        function lengthSend(){
+            let value = document.getElementById("r_length").value;
+            let field = "r_length";
+            postData(field,value);
+        }
+        function postData(field,value){
+            axios.post('/admin/setting',{
+               field:field,
+               value:value
+           });
+           alert("저장하였습니다.");
+        }
+    </script>
+    {% endblock %}

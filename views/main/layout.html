@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+	<meta property="og:image" content="http://dreamforone.co.kr/~jnjason/theme/basic/img/ogimg.png">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+<meta property="og:image" content="../theme/basic/img/ogimg.png" />
+<title>JEJE</title>
+<link href="http://www.busanjeje.com/css/import.css" rel="stylesheet" type="text/css">
+<link href="http://www.busanjeje.com/theme/basic/css/bootstrap.min.css" rel="stylesheet" type="text/css"><!--부트스트랩-->
+<link href="http://www.busanjeje.com/theme/basic/css/animate.css" rel="stylesheet" type="text/css"><!--애니메이트-->
+<link href="http://www.busanjeje.com/theme/basic/css/font.css" rel="stylesheet" type="text/css"><!--폰트-->
+<link href="http://www.busanjeje.com/theme/basic/css/main.css" rel="stylesheet" type="text/css"><!--메인컨텐츠-->
+<link href="http://www.busanjeje.com/theme/basic/css/sub.css" rel="stylesheet" type="text/css"><!--서브페이지-->
+
+<link rel="stylesheet" href="http://www.busanjeje.com/theme/basic/css/default.css">
+<link href="http://www.busanjeje.com/css/board.css" rel="stylesheet" type="text/css">
+<!--[if lte IE 8]>
+<script src="http://www.busanjeje.com/js/html5.js"></script>
+<![endif]-->
+
+<script src="http://www.busanjeje.com/theme/basic/js/jquery.min.js"></script><!--메인슬라이더에 필요한 js-->
+<script src="http://www.busanjeje.com/theme/basic/js/jquery.bxslider.min.js"></script><!--메인슬라이더에 필요한 js-->
+<script src="http://www.busanjeje.com/theme/basic/js/mainslider.js"></script><!--메인슬라이더에 필요한 js-->
+<script src="http://www.busanjeje.com/theme/basic/js/jquery.menu.js"></script><!--상단메뉴(pc및모바일) 및 그외 JS추가부분-->
+<script src="http://www.busanjeje.com/theme/basic/js/sweetalert.min.js"></script>
+<script src="http://www.busanjeje.com/js/wrest.js"></script>
+<script src="http://www.busanjeje.com/js/jquery-1.9.1.js"></script>
+<script src="http://www.busanjeje.com/js/common.js"></script>
+<script src="http://www.busanjeje.com/theme/basic/js/ui.js"></script><!--공통-->
+<script src="http://www.busanjeje.com/theme/basic/js/bootstrap.min.js"></script><!--부트스트랩-->
+<script src="http://www.busanjeje.com/theme/basic/js/all.min.js"></script>
+<script src="http://www.busanjeje.com/theme/basic/js/wow.min.js"></script><!--와우-->
+<script src="http://www.busanjeje.com/theme/basic/js/jquery.ba-hashchange.1.3.min.js"></script><!--Hash 체크 JS파일-->
+<script src="http://www.busanjeje.com/theme/basic/js/hash.eazy-0.3.js"></script><!--HASH 이동 JS파일-->
+<script src="http://www.busanjeje.com/js/socket.io.js"></script>
+<script type="text/javascript">
+	//소켓통신 하기
+    const socket = io.connect('https://www.jobgo.ac:3001/play',{
+        path:'/socket.io'
+    });
+	const bannerSocket = io.connect('https://www.jobgo.ac:3001/banner',{
+        path:'/socket.io'
+    });
+</script>
+<script src="http://www.busanjeje.com/js/jquery.slides.min.js"></script>
+<script src="http://www.busanjeje.com/js/ui.js"></script>
+
+</head>
+  <body>
+    {% include "./header.html" %}
+    {% block content %}
+    {% endblock %}
+    {% block script %}
+    {% endblock %}
+    {% include "./footer.html" %}
+  </body>
+</html>

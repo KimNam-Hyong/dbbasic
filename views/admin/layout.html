@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+	
+<meta property="og:image" content="" /> 
+    <title>JEJE ADMIN</title>
+    <!--css-->
+    <link rel="stylesheet" href="http://www.busanjeje.com/admin/css/style.css?ver=CSS_VER">
+    <link rel="stylesheet" href="http://www.busanjeje.com/admin/css/loading.css?ver=CSS_VER">
+	<link href="http://www.busanjeje.com/theme/basic/css/bootstrap.min.modal.css" rel="stylesheet" type="text/css"><!--부트스트랩-->
+	<style>
+	.push_layer{
+		position:fixed;
+		bottom:0;
+		height:50px;
+		width:90%;
+		border:2px solid #000;
+		background-color:#fff;
+		padding:10px;
+		margin:auto;
+		display:block;
+		left:50%;
+		transform: translate(-50%,0)
+	}
+	</style>
+    <!--js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://www.busanjeje.com/js/common.js?ver=JS_VER"></script>
+    <script src="http://www.busanjeje.com/admin/js/main.js?ver=JS_VER"></script>
+	<script src="./js/sweetalert.min.js"></script><!--alert-->
+	<script src="http://www.busanjeje.com/theme/basic/js/bootstrap.min.js"></script><!--부트스트랩-->
+	<script src="http://www.busanjeje.com/js/socket.io.js"></script>
+		
+    <script>
+        const g5_url = "http://www.busanjeje.com";
+        const g5_path = "/home/jnjason/public_html";
+		//소켓통신 하기
+		const socket = io.connect('https://www.jobgo.ac:3001/play',{
+			path:'/socket.io'
+		});
+		const bannerSocket = io.connect('https://www.jobgo.ac:3001/banner',{
+			path:'/socket.io'
+		});
+    </script>
+    
+    <style>
+      body {height: 100vh;background: url(./theme/basic/img/login_bg.jpg) center center; background-repeat: no-repeat; background-size: cover}
+      #userlogin {max-width: 600px; text-align: center; margin: 0 auto; position: relative;height: 100vh;}
+      div.form {position: absolute;bottom: 150px;left: 50%;transform: translateX(-50%);    width: 100%;}
+      img.logo {width: 220px; margin-top: 130px}
+      p.sub {text-transform:uppercase;color: #fff; font-weight: 700; font-size: 2.3em;}
+      p.sub sup {  padding-left: 5px ; font-size: 0.5em;}
+      p.copy {text-transform:uppercase;color: #fff; font-weight: 700; font-size: 1.2em}
+      p.kakao {text-transform:uppercase;color: #371b1a;margin: 20px auto;font-size: 1.7em;background: #ffeb00; padding: 15px 7px; border-radius: 10px;
+        width: 80%;}
+      p.kakao img {height: 20px;}
+      
+    </style>
+</head>
+  <body>
+    {% include "./header.html" %}
+    {% block content %}
+    {% endblock %}
+    {% block script %}
+    {% endblock %}
+    {% include "./footer.html" %}
+  </body>
+</html>

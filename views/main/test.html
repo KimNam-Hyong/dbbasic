@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>소켓 통신 연습</title>
+    </head>
+    <body>
+        <buttton id="send-btn">전송하기</buttton>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            //소켓통신 하기
+            const socket = io.connect('/test',{
+                path:'/socket.io'
+            });
+            socket.on("re-res",(data) => {
+                alert(data.data);
+            });
+            document.querySelector("#send-btn").addEventListener("click",()=>{
+                socket.emit("send",{data:"테스트입니다"});
+            });
+        </script>
+    </body>
+</html>

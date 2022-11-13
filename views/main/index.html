@@ -1,0 +1,38 @@
+{% extends "./layout.html" %}
+
+
+{% block content %}
+<style>
+	body {height: 100vh;background: url(http://www.busanjeje.com/theme/basic/img/login_bg.jpg) center center; background-repeat: no-repeat; background-size: cover}
+	#userlogin {max-width: 600px; text-align: center; margin: 0 auto; position: relative;height: 100vh;}
+	div.form {position: absolute;bottom: 150px;left: 50%;transform: translateX(-50%);    width: 100%;}
+	img.logo {width: 220px; margin-top: 130px}
+	p.sub {text-transform:uppercase;color: #fff; font-weight: 700; font-size: 2.3em;}
+	p.sub sup {  padding-left: 5px ; font-size: 0.5em;}
+	p.copy {text-transform:uppercase;color: #fff; font-weight: 700; font-size: 1.2em}
+	p.kakao {text-transform:uppercase;color: #371b1a;margin: 20px auto;font-size: 1.7em;background: #ffeb00; padding: 15px 7px; border-radius: 10px;
+    width: 80%;}
+	p.kakao img {height: 20px;}
+	
+</style>
+
+<div id="userlogin" >
+	<img src="http://www.busanjeje.com/theme/basic/img/logo.png" class="logo" />
+	<div class="form"><p class="sub">smart music request<sup>tm</sup></p>
+	{%
+		if user 	
+	%}		
+	<div style="color:#fff;font-size:20px;font-weight:bold">
+		로그인이 됨<br/>
+		<a href="/user/logout">로그아웃</a>
+	</div>
+	{% else %}
+	<a href="/user/kakao"><p class="kakao">
+		<img src="http://www.busanjeje.com/theme/basic/img/icon_kakao.png" /> 카카오톡으로 로그인하기</p>
+	</a>
+	
+	{% endif %}
+	<p class="copy">JEJE LAB</p></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="chat" style="height:500px;overflow-y:scroll;width:100%">
+
+        </div>
+        <div>
+            <form>
+                <input type="text" id="msg" style="width:300px">
+                <button id="send-btn" type="button">전송하기</button>
+            </form>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            //소켓통신 하기
+            const socket = io.connect('/chat',{
+                path:'/socket.io'
+            });
+            const userId = "test"+Math.random(10,99);
+            document.querySelector("#send-btn")
+            .addEventListener("click",()=>{
+                let msg = document.getElementById("msg").value;
+                if(msg === ""){
+                    alert("메세지를 입력해 주세요");
+                    document.getElementById("msg").focus();
+                    return;
+                }
+                /*const chat = document.getElementById("chat");
+                chat.innerHTML+="나 : "+msg+"<br/>";*/
+                socket.emit("send",{userId:userId,msg:msg});
+                document.getElementById("msg").value="";
+                document.getElementById("msg").focus();
+            });
+            
+            socket.on("res",(data) => {
+                const msg = data.userId===userId?
+                    "<div style='width:100%;'>나 : "+data.msg+"</div><br/>":
+                    "<div style='width:100%;text-align:right'>상대방 : "+data.msg+"</div><br/>";
+                document.getElementById("chat").innerHTML+=msg;
+            });
+        </script>
+    </body>
+</html>
